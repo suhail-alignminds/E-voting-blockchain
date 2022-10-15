@@ -20,10 +20,12 @@ contract Election {
     struct Voter {
         uint256 id;
         string name;
+        string email;
     }
 
     mapping(uint256 => Candidate) candidates;
     mapping(address => bool) voted;
+
 
     mapping(address => bool) isVoter;
 
@@ -63,7 +65,7 @@ contract Election {
         candidatesCount++;
     }
 
-    function addVoter(address _voter) public {
+    function addVoter(address _voter,string memory email ) public {
         require(owner == msg.sender, "Only owner can add voter");
         require(!isVoter[_voter], "Voter already added");
         require(
@@ -72,7 +74,9 @@ contract Election {
         );
 
         isVoter[_voter] = true;
+        // Voter[email] = email;
     }
+    
 
     function getRole(address _current) public view returns (uint256) {
         if (owner == _current) {

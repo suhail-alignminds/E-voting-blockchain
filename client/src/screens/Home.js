@@ -44,7 +44,7 @@ export default function Home() {
   useEffect(() => {
     loadWeb3();
   }, []);
-
+  
   useEffect(() => {
     getRole();
   }, [contract]);

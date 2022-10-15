@@ -16,6 +16,15 @@ export default function CoverPage() {
     window.location.reload();
   };
 
+  const handleClickUser = () => {
+    navigate("/userLogin");
+  }
+
+  const handleClickAdmin = () => {
+    navigate("/adminLogin");
+  }
+
+ 
   return (
     <CoverLayout
       sxBackground={{
@@ -47,7 +56,7 @@ export default function CoverPage() {
         variant="contained"
         size="large"
         sx={{ minWidth: 200 }}
-        onClick={handleClick}
+        onClick={handleClickUser}
       >
         User Login
       </Button>
@@ -56,7 +65,7 @@ export default function CoverPage() {
         variant="contained"
         size="large"
         sx={{ minWidth: 200, ml: 2 }}
-        onClick={handleClick}
+        onClick={handleClickAdmin}
       >
         Admin Login
       </Button>   

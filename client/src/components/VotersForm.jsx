@@ -6,11 +6,12 @@ import { Stack } from "@mui/material";
 
 export default function VotersForm({ contract, web3, currentAccount }) {
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleForm = async (event) => {
     event.preventDefault();
     try {
-      await contract.methods.addVoter(name).send({ from: currentAccount });
+      await contract.methods.addVoter(name,email).send({ from: currentAccount });
       console.log("voter added");
     } catch (error) {
       console.log(error);
@@ -21,6 +22,10 @@ export default function VotersForm({ contract, web3, currentAccount }) {
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  }
 
   return (
     <Box
@@ -42,6 +47,13 @@ export default function VotersForm({ contract, web3, currentAccount }) {
           variant="outlined"
           value={name}
           onChange={handleNameChange}
+        />
+        <TextField
+          id="outlined-basic"
+          label="Voter Email"
+          variant="outlined"
+          value={name}
+          onChange={handleEmail}
         />
         <Button variant="contained" type="submit">
           Add Voter
